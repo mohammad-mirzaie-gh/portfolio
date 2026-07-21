@@ -52,32 +52,32 @@ function MainFooter() {
 
         <Reveal distance={20} delay={0.1} className="grid sm:grid-cols-2 gap-3">
           {CHANNELS.map((channel) => (
-            <Link
-              key={channel.label}
-              href={channel.href}
-              target={channel.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={channel.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-              aria-label={channel.label}
-              className="group lift-card flex items-center justify-between gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-5 py-4 hover:border-color-theme/35 hover:bg-color-theme/[0.05]"
-            >
-              <div className="flex items-center gap-3.5 min-w-0">
-                <span className="shrink-0 flex items-center justify-center w-10 h-10 rounded-lg bg-color-theme/10 text-color-theme group-hover:bg-color-theme group-hover:text-bg-theme transition-colors duration-300">
-                  <channel.icon size={18} />
-                </span>
-                <span className="flex flex-col min-w-0">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-dim">
-                    {channel.label}
-                  </span>
-                  <span className="text-white font-medium truncate">
-                    {channel.value}
-                  </span>
-                </span>
-              </div>
-              <ArrowUpRight
-                size={18}
-                className="shrink-0 text-white/30 group-hover:text-color-theme transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </Link>
+<Link
+  key={channel.label}
+  href={channel.href}
+  target={channel.href.startsWith("mailto:") ? undefined : "_blank"}
+  rel={channel.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+  aria-label={channel.label}
+  className="w-full group lift-card flex items-center justify-between gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-5 py-4 hover:border-color-theme/35 hover:bg-color-theme/[0.05] min-w-0"
+>
+  <div className="flex items-center gap-3.5 min-w-0 flex-1">
+    <span className="shrink-0 flex items-center justify-center w-10 h-10 rounded-lg bg-color-theme/10 text-color-theme group-hover:bg-color-theme group-hover:text-bg-theme transition-colors duration-300">
+      <channel.icon size={18} />
+    </span>
+    <span className="flex flex-col min-w-0 flex-1">
+      <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-dim">
+        {channel.label}
+      </span>
+      <p className="text-white font-medium truncate min-w-0">
+        {channel.value}
+      </p>
+    </span>
+  </div>
+  <ArrowUpRight
+    size={18}
+    className="shrink-0 text-white/30 group-hover:text-color-theme transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+  />
+</Link>
           ))}
         </Reveal>
       </div>
