@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Surface ---- */
+  --color-bg-theme: #050b14;
+  --color-bg-raised: #0a1526;
+  --color-bg-sunken: #030710;
+  --color-border-white: rgba(226, 232, 240, 0.1);
+
+  /* ---- Brand: signal teal ---- */
+  --color-color-theme: #2dd4c7;
+  --color-signal-deep: #16a394;
+  --color-signal-glow: #7cf2e5;
+
+  /* ---- Accent: warm amber, used sparingly for one CTA / highlight ---- */
+  --color-accent-amber: #f2b155;
+  --color-accent-amber-deep: #d68f34;
+
+  /* ---- Ink ---- */
+  --color-white-p: rgb(163, 174, 191);
+  --color-ink-dim: rgb(114, 128, 150);
+
+  /* ---- Type ----
+     A native stack, tuned deliberately: -apple-system / Segoe UI / Roboto
+     give a crisp, humanist grotesque on every platform with zero webfont
+     request and zero flash-of-unstyled-text. The mono stack pulls each
+     platform's real coding font (SF Mono, Cascadia/Consolas, Roboto Mono),
+     which reads as authentically "developer" rather than a generic label
+     font — fitting for a software engineer's own site. */
+  --font-sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Cascadia Mono",
+    "Roboto Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --shadow-ghost: 0 0 10px;
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 570px;
+  --breakpoint-md: 900px;
+  --breakpoint-xl: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+a {
+  color: white;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(45, 212, 199, 0.28);
+  color: #fff;
+}
+
+/* Visible keyboard focus everywhere — accessibility floor */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-color-theme);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
