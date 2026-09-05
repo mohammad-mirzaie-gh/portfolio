@@ -1,0 +1,196 @@
+
+.shiny-text {
+  color: #ffffff9d;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgb(255, 255, 255) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+  }
+}
+
+.card-spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.6;
+}
+
+/* ============================================================
+   Signature backdrop: a quiet engineering grid + drifting glow.
+   This is the page's one big visual bet — a blueprint/schematic
+   field that reads as "precision", not decoration.
+   ============================================================ */
+.grid-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(226, 232, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 85%);
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 40%, transparent 85%);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.08); }
+}
+
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-35px, 25px) scale(1.05); }
+}
+
+.glow-orb--a {
+  animation: drift-a 14s ease-in-out infinite;
+}
+
+.glow-orb--b {
+  animation: drift-b 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb--a,
+  .glow-orb--b {
+    animation: none;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-color-theme);
+  box-shadow: 0 0 0 0 rgba(45, 212, 199, 0.6);
+  animation: status-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 199, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(45, 212, 199, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 199, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.lift-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.lift-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px -20px rgba(45, 212, 199, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift-card:hover {
+    transform: none;
+  }
+}
+
+/* Scrollbar, refined to match the surface */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-theme);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 199, 0.25);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg-theme);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(45, 212, 199, 0.45);
+}
